@@ -1,7 +1,20 @@
+---
+layout:     post
+title:      【译】我如何知道Go中的变量分配在堆还是栈上
+subtitle:   Go & 堆 & 栈
+date:       2018-11-30
+author:     Lvsi
+header-img: 
+catalog: true
+tags:
+    - Go堆栈
+---
+
 ## 我如何知道Go中的变量分配在堆还是栈上
 
-> 翻译文章来自 [《How do I know whether a variable is allocated on the heap or the stack?》](https://golang.org/doc/faq#stack_or_heap)
-
+> 翻译文章来自 [《How do I know whether a variable is allocated on the heap or the stack?》](https://golang.org/doc/faq#stack_or_heap)<br/>
+> 补充翻译：[原文翻译](http://docscn.studygolang.com/doc/faq#%E5%A0%86%E6%88%96%E6%A0%88)<br/>
+> 译者：[Lvsi](https://github.com/Lvsi-China)
 
 从正确的观点上分析，你不必知道这个。对于Go中的所有变量而言，只要有对它的引用，它就是存在的。选择的存储位置和语言的语义是无关的。
 
