@@ -1,8 +1,8 @@
 ## 【译】为什么Go可以有百万级别的Goroutine，但Java线程只能有上千个？
 
 > 翻译文章来自 [《Why you can have millions of Goroutines but only thousands of Java Threads》](https://rcoh.me/posts/why-you-can-have-a-million-go-routines-but-only-1000-java-threads/)
-> 补充翻译：[原文翻译](https://www.infoq.cn/article/a-million-go-routines-but-only-1000-java-threads)
-> 本文译者：Lvsi
+> 补充翻译：[原文翻译](https://www.infoq.cn/article/a-million-go-routines-but-only-1000-java-threads)<br/>
+
 
 许多有经验的工程师在使用基于JVM的语言时，都会遇到过如下的错误：
 
