@@ -1,6 +1,19 @@
-## 关于 Http/3 的注意事项
+---
+layout:     post
+title:      【译】关于 Http/3 的注意事项
+subtitle:   HTTP/3标准化
+date:       2018-11-24
+author:     Lvsi
+header-img: 
+catalog: true
+tags:
+    - HTTP
+---
 
-> 翻译文章来自 [《Some notes about HTTP/3》](https://blog.erratasec.com/2018/11/some-notes-about-http3.html#.W_idYlUzbDe)
+## 【译】关于 Http/3 的注意事项
+
+> 原文 [《Some notes about HTTP/3》](https://blog.erratasec.com/2018/11/some-notes-about-http3.html#.W_idYlUzbDe)<br/>
+> 译者：[Lvsi](https://github.com/Lvsi-China)
 
 Http/3很快就要标准化了，作为一个古老的协议，我想我应该对此写些评注。
 
@@ -20,7 +33,7 @@ QUIC其实更多的是一个新版本的TCP（难到叫做 TCP/2 ??）而不是�
 
 QUIC扩展了这种多路复用，使得处理浏览器/服务器之间的多个交互变得更加容易，各个交互之间互不干扰，但使用单个带宽预估，从用户的角度来看，这将使交互更加顺畅，同时减少了通过路由器时的拥塞。
 
-现在谈谈用户模式堆栈。 TCP的问题的突出表现于在服务器上时，TCP的连接是由操作系统内核处理的，而服务本身在用户态中运行。 跨内核/用户态边会导致性能问题。 跟踪大量TCP连接会引起可伸缩性问题。 有些人尝试将服务加入内核，以避免转换。这是一个糟糕的举措因为它破坏了操作系统的稳定性。 我自己的解决方案是使用BlackICE IPS和masscan，就是使用硬件的用户态驱动程序，把接收到的数据包从网络芯片直接传送到用户态进程，绕过内核(参见 PoC||GTFO #15)，使用自定义的TCP堆栈。 近年来，DPDK套件已经流行起来。
+现在谈谈用户模式堆栈。TCP的问题的突出表现于在服务器上时，TCP的连接是由操作系统内核处理的，而服务本身在用户态中运行。 跨内核/用户态边会导致性能问题。 跟踪大量TCP连接会引起可伸缩性问题。 有些人尝试将服务加入内核，以避免转换。这是一个糟糕的举措因为它破坏了操作系统的稳定性。 我自己的解决方案是使用BlackICE IPS和masscan，就是使用硬件的用户态驱动程序，把接收到的数据包从网络芯片直接传送到用户态进程，绕过内核(参见 PoC GTFO #15)，使用自定义的TCP堆栈。 近年来，DPDK套件已经流行起来。
 
 但是，从TCP迁移到UDP可以在没有用户态驱动程序的情况下获得相同的性能。你可以调用```recvmmsg()```一次接收一堆UDP数据包，而不是调用众所周知的```recv()```函数来一次接收一个数据包。
 
