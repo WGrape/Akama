@@ -26,16 +26,19 @@ CDN，或内容分发网络通常用于分发静态资源，如图像，视频�
 你可能听说过网络延迟，比为提到ping时。 此名称来自可用于测量延迟的```ping```工具。在你的电脑上几乎不可能没有这个工具。
 
 你可以自己使用ping工具来了解延迟的工作原理。打开终端并键入以下命令：
+
 ```
 ping ec2.us-east-1.amazonaws.com
 ```
 
 此命令将向Amazon的```us-east-1```区域中的服务器发送请求，并等待响应。 ```us-east-1```地区位于美国北弗吉尼亚州。 当我从马里兰州的办公室运行此命令时，我得到以下响应：
 
+
 ```
 PING ec2.us-east-1.amazonaws.com (54.239.28.176) 56(84) bytes of data. 
 64 bytes from 54.239.28.176: icmp_seq=1 ttl=232 time=50.3 ms
 ```
+
 
 ```ping```工具的报告显示：数据从我的计算机传输到亚马逊的服务器并返回需要50.3毫秒。
 
@@ -45,7 +48,6 @@ PING ec2.us-east-1.amazonaws.com (54.239.28.176) 56(84) bytes of data.
 PING ec2.ap-southeast-2.amazonaws.com (54.240.195.243) 56(84) bytes of data. 
 64 bytes from 54.240.195.243: icmp_seq=1 ttl=233 time=301 ms
 ```
-
 与更远的服务器通信导致往返延迟增加了500％。 250毫秒可能看起来是很短暂的一个时间，但这个时间的延迟惩罚施加于用户对该服务器的每个请求中：CSS，JavaScript，图像等。即使少量的延迟也会对你的网站产生负面影响。 如果有一种简单的方法来消除这种延迟，你不想做吗？
 
 > 如果你想要尝试ping其他区域，请查看[EC2区域](http://ec2-reachability.amazonaws.com/)的此图表。你可以直接ping IP地址，或使用遵循约定ec2的主机名 ```$ REGION.amazonaws.com```。
