@@ -1,4 +1,19 @@
-## 从你按下电源到Linux登录框出现,这背后都发生了什么
+---
+layout:     post
+title:      【译】从你按下电源到Linux登录框出现,这背后都发生了什么
+subtitle:   Linux的启动过程
+date:       2018-12-03
+author:     Lvsi
+header-img: 
+catalog: true
+tags:
+    - Linux
+---
+
+## 【译】从你按下电源到Linux登录框出现,这背后都发生了什么
+
+> 原文 [《what happens in the background from the time you press the Power button until the Linux login prompt appears?》](https://leetcode.com/discuss/interview-question/124638/what-happens-in-the-background-from-the-time-you-press-the-Power-button-until-the-Linux-login-prompt-appears/?orderBy=most_votes)<br/>
+> 译者：[Lvsi](https://github.com/Lvsi-China)
 
 ### 前言 
 
