@@ -1,6 +1,8 @@
 # Akama
 
 <p align="center">
+<img src="https://img.shields.io/badge/%E7%BB%84%E7%BB%87-Akama-green.svg">
+<img src="https://img.shields.io/badge/%E6%96%87%E6%A1%A3-Markdown-red.svg">
 <img src="https://img.shields.io/badge/license-MIT-black.svg">
 </p>
 
