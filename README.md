@@ -1,6 +1,8 @@
 # Akama
 
+<p align="center">
 <img src="https://img.shields.io/badge/license-MIT-black.svg">
+</p>
 
 翻译国外CST相关资料( Computer Science and Technology ). [博客地址](https://lvsi-china.github.io/)
 
