@@ -123,7 +123,7 @@ Pragma: no-cache
 
 在本系列的下一篇文章中，我会讲解你应该设置的 headers 的最佳实践，以及如何在边缘启用它们。
 
-> 有关HTTP协议的网站：[http://](https://httpwg.org/)
-> 文中涉及到交互的那个网站：[fastlydemo](https://fiddle.fastlydemo.net/)
-> HTTP Archive : [HTTP Archive](https://httparchive.org/)
+> - 有关HTTP协议的网站：[http://](https://httpwg.org/)
+> - 文中涉及到交互的那个网站：[fastlydemo](https://fiddle.fastlydemo.net/)
+> - HTTP Archive : [HTTP Archive](https://httparchive.org/)
 
