@@ -42,5 +42,5 @@ Akama组织致力于翻译国外计算机领域资料，只包括如下 3 种资
 | 成员 | 成员 | 成员 |
 | --- | --- | --- |
 | [Lvsi-China](https://github.com/Lvsi-China) | [ChanChou]()  | [WangJJ](https://github.com/wjj57) |
-| [GFeather](https://github.com/GFeather) | | |
+| [墨墨](https://github.com/1092682749) | [GFeather](https://github.com/GFeather) | |
 
