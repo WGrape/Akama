@@ -32,9 +32,9 @@ Akama组织致力于翻译国外计算机领域资料，只包括如下 3 种资
 
 ## ✦ 资源
 
-语雀：[Lvsi](https://www.yuque.com/lvsi)
-短篇：[短篇翻译](https://lvsi-china.github.io)
-长篇：[长篇翻译](https://lvsi-china.github.io/long/)
+- 语雀：[Lvsi](https://www.yuque.com/lvsi)
+- 短篇：[短篇翻译](https://lvsi-china.github.io)
+- 长篇：[长篇翻译](https://lvsi-china.github.io/long/)
 
 
 ## ☺ 成员
