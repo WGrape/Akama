@@ -30,6 +30,13 @@ Akama组织致力于翻译国外计算机领域资料，只包括如下 3 种资
 
 大家如果有遇到感觉比较好的资料，可以在Issues里面回复，或者自己翻译后提交都可以，我也会署上贡献者的名字。欢迎大家的加入！谢谢！
 
+## ✦ 资源
+
+语雀：[Lvsi](https://www.yuque.com/lvsi)
+短篇：[短篇翻译](https://lvsi-china.github.io)
+长篇：[长篇翻译](https://lvsi-china.github.io/long/)
+
+
 ## ☺ 成员
 
 | 成员 | 成员 | 成员 |
