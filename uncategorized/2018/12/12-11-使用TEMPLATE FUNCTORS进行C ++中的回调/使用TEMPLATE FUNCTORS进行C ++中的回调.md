@@ -218,13 +218,7 @@ tags:
 	void (* __bound fptr)() = &fred.foo;
 ```
 
-- 这fptr是一个绑定指针，指向不带参数和返回的函数void。请注意，这Fred 不是fptr's类型的一部分。它是用对象fred和指向成员函数的指针 初始化的foo。他说：
-
-FPTR（）;
-
-将调用foo上fred。
-
-这样的绑定指针是回调的理想选择：
+- 这fptr是一个绑定指针，指向不带参数和返回的函数void。请注意，这Fred 不是fptr's类型的一部分。它是用对象fred和指向成员函数的指针 初始化的foo。他说：FPTR（）;将调用foo上fred。这样的绑定指针是回调的理想选择：
 
 ```
 	
@@ -314,15 +308,15 @@ FPTR（）;
 
 - 将某些东西连接到使用回调的组件很简单。您可以Functor使用适当的调用结果 初始化a makeFunctor()。有两种口味makeFunctor()。您可以使用ptr-to-stand-alone功能调用它：
 
-	> makeFunctor（哇）
+	> makeFunctor(&wow)
 - 或者与对象和指向成员的函数：
 
-	> makeFunctor（CD，及CD播放器::播放）
+	> makeFunctor(cd,&CDPlayer::play)
 - 我必须在这一点上说清楚，并指出上面的语法 makeFunctor()只能在提议的语言中使用，因为它需要模板成员（具体来说，Functor 构造函数必须是模板）。在当前语言中，通过传递makeFunctor()类型为ptr-to-the-Functor-type-you-want-to-create的伪参数，可以实现相同的结果。回调库的这次迭代要求您将makeFunctor() 虚拟对象作为第一个参数传递。简单地演员0提供这个论点：
 
-	> makeFunctor（（Functor0 *）0，＆哇）
+	> makeFunctor((Functor0 *)0,&wow)
 
-	> makeFunctor（（Functor0 *）0，cd和CDPlayer :: play）;
+	> makeFunctor((Functor0 *)0,cd,&CDPlayer::play);
 - 我将从这里开始使用这种当前语言语法。
 
 - Button上面的类只需要一个没有返回参数的回调函数void。其他组件可能希望将数据传递给回调或返回。区分一个函子与另一个函子的唯一区别是参数的数量和类型operator()及其返回类型（如果有的话）。这表明仿函数可以通过（一组）模板在库中表示：
