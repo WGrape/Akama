@@ -1,0 +1,408 @@
+# Compiler basics: lisp to assembly
+November 20, 2018
+
+In this post we'll write a simple compiler in Javascript (on Node) without any third-party libraries. Our goal is to take an input program like (+ 1 (+ 2 3)) and produce an output assembly program that does these operations to produce 6 as the exit code. The resulting compiler can be found here.
+
+We'll cover:
+
+* Parsing
+* Code generation
+* Assembly basics
+* Syscalls
+
+And for now we'll omit:
+
+* Programmable function definitions
+* Non-symbol/-numeric data types
+* More than 3 function arguments
+* Lots of safety
+* Lots of error messsages
+
+## Parsing
+We pick the [S-expression](https://en.wikipedia.org/wiki/S-expression) syntax mentioned earlier because it's very easy to parse. Furthermore, our input language is so limited that we won't even break our parser into separate lexing/parsing stages.
+
+> Once you need to support string literals, comments, decimal literals, and other more complex literals it becomes easier to use separate stages. 
+>
+> If you're curious about these separate stages of parsing, you may be interested in my post on writing a JSON parser. 
+>
+> Or, check out my BSDScheme project for a fully-featured lexer and parser for Scheme.
+
+The parser should produce an Abstract Syntax Tree (AST), a data structure representing the input program. Specifically, we want (+ 1 (+ 2 3)) to produce ['+', 1, ['+', 2, 3]] in Javascript.
+
+There are many different ways to go about parsing but the most intuitive to me is to have a function that accepts a program (a string) and returns a tuple containing the program parsed so far (an AST) and the rest of the program (a string) that hasn't been parsed.
+
+That leaves us with a function skeleton that looks like this:
+
+```js
+module.exports.parse = function parse(program) {
+  const tokens = [];
+
+  ... logic to be added ...
+
+  return [tokens, ''];
+};
+```
+
+The code that initially calls parse will thus have to deal with unwrapping the outermost tuple to get to the AST. For a more helpful compiler we could check that the entire program was actually parsed by failing if the second element of the return result is not the empty string.
+
+Within the function we will iterate over each character and accumulate until we hit space, left or right parenthesis:
+
+```js
+module.exports.parse = function parse(program) {
+  const tokens = [];
+  let currentToken = '';
+
+  for (let i = 0; i < program.length; i++) {
+    const char = program.charAt(i);
+
+    switch (char) {
+      case '(': // TODO
+        break;
+      case ')': // TODO
+        break;
+      case ' ':
+        tokens.push(+currentToken || currentToken);
+        currentToken = '';
+        break;
+      default:
+        currentToken += char;
+        break;
+    }
+  }
+
+  return [tokens, ''];
+};
+```
+The recursive parts are always the most challenging. The right paren is easiest. We must push the current token and return all tokens with the rest of the program:
+
+```js
+module.exports.parse = function parse(program) {
+  const tokens = [];
+  let currentToken = '';
+
+  for (let i = 0; i < program.length; i++) {
+    const char = program.charAt(i);
+
+    switch (char) {
+      case '(': // TODO
+        break;
+      case ')':
+        tokens.push(+currentToken || currentToken);
+        return [tokens, program.substring(i + 1)];
+      case ' ':
+        tokens.push(+currentToken || currentToken);
+        currentToken = '';
+        break;
+      default:
+        currentToken += char;
+        break;
+    }
+  }
+
+  return [tokens, ''];
+};
+```
+
+Finally the left paren should recurse, add the parsed tokens to the list of sibling tokens, and force the loop to start at the new unparsed point.
+
+```js
+module.exports.parse = function parse(program) {
+  const tokens = [];
+  let currentToken = '';
+
+  for (let i = 0; i < program.length; i++) {
+    const char = program.charAt(i);
+
+    switch (char) {
+      case '(': {
+        const [parsed, rest] = parse(program.substring(i + 1));
+        tokens.push(parsed);
+        program = rest;
+        i = 0;
+        break;
+      }
+      case ')':
+        tokens.push(+currentToken || currentToken);
+        return [tokens, program.substring(i + 1)];
+      case ' ':
+        tokens.push(+currentToken || currentToken);
+        currentToken = '';
+        break;
+      default:
+        currentToken += char;
+        break;
+    }
+  }
+
+  return [tokens, ''];
+};
+```
+
+Assuming this is all in parser.js, let's try it out in the REPL:
+
+```bash
+$ node
+> const { parse } = require('./parser');
+undefined
+> console.log(JSON.stringify(parse('(+ 3 (+ 1 2)')));
+[[["+",3,["+",1,2]]],""]
+```
+Solid. We move on.
+
+## Assembly 101
+Assembly is essentially the lowest-level programming language we can use. It is a human readable, 1:1 representation of the binary instructions the CPU can interpret. Conversion from assembly to binary is done with an assembler; the reverse step is done with a disassembler. We'll use gcc for assembling since it deals with some oddities of assembly programming on macOS.
+
+The primary data structures in assembly are registers (temporary variables stored by the CPU) and the program stack. Every function in a program has access to the same registers, but convention cordons off sections of the stack for each function so it ends up being a slightly more durable store than registers. RAX, RDI, RDX, and RSI are a few registers available to us.
+
+Now we only need to know a few instructions to compile our program (the rest of programming assembly is convention):
+
+* MOV: store one register's content into another, or store a literal number into a register
+* ADD: store the sum of two register's contents in the first register
+* PUSH: store a register's content on the stack
+* POP: remove the top-most value from the stack and store in a register
+* CALL: enter a new section of the stack and start running the function
+* RET: enter the calling functions stack and return to evaluating from the next instruction after the call
+* SYSCALL: like CALL but where the function is handled by the kernel
+
+## Function calling convention
+Assembly instructions are flexible enough that there is no language-defined way to make function calls. Therefore it is important to answer (at least) the following few questions:
+
+* Where are parameters stored by the caller so that the callee has access to them?
+* Where is the return value stored by the callee so the caller has access to it?
+* What registers are saved by whom?
+
+Without getting too far into the specifics, we'll assume the following answers for development on x86_64 macOS and Linux systems:
+
+* Parameters are stored (in order) in the RDI, RSI, and RDX registers
+    * We won't support passing more than three arguments
+* The return value is stored in the RAX register
+* RDI, RSI, and RDX registers are stored by the caller
+
+## Code generation
+With assembly basics and the function call convention in mind, we've got enough to generate code from the parsed program's AST.
+
+The skeleton of our compile code will look like this:
+```js
+function emit(depth, code) {
+  const indent = new Array(depth + 1).map(() => '').join('  ');
+  console.log(indent + code);
+}
+
+function compile_argument(arg, destination) {
+  // If arg AST is a list, call compile_call on it
+
+  // Else must be a literal number, store in destination register
+}
+
+function compile_call(fun, args, destination) {
+  // Save param registers to the stack
+
+  // Compile arguments and store in param registers
+
+  // Call function
+
+  // Restore param registers from the stack
+
+  // Move result into destination if provided
+}
+
+function emit_prefix() {
+  // Assembly prefix
+}
+
+function emit_postfix() {
+  // Assembly postfix
+}
+
+module.exports.compile = function parse(ast) {
+  emit_prefix();
+  compile_call(ast[0], ast.slice(1));
+  emit_postfix();
+};
+```
+From our pseudo-code in comments it is simple enough to fill in. Let's fill in everything but the prefix and postfix code.
+
+```js
+function compile_argument(arg, destination) {
+  // If arg AST is a list, call compile_call on it
+  if (Array.isArray(arg)) {
+    compile_call(arg[0], arg.slice(1), destination);
+    return;
+  }
+
+  // Else must be a literal number, store in destination register
+  emit(1, `MOV ${destination}, ${arg}`);
+}
+
+const BUILTIN_FUNCTIONS = { '+': 'plus' };
+const PARAM_REGISTERS = ['RDI', 'RSI', 'RDX'];
+
+function compile_call(fun, args, destination) {
+  // Save param registers to the stack
+  args.forEach((_, i) => emit(1, `PUSH ${PARAM_REGISTERS[i]}`));
+
+  // Compile arguments and store in param registers
+  args.forEach((arg, i) => compile_argument(arg, PARAM_REGISTERS[i]));
+
+  // Call function
+  emit(1, `CALL ${BUILTIN_FUNCTIONS[fun] || fun}`);
+
+  // Restore param registers from the stack
+  args.forEach((_, i) => emit(1, `POP ${PARAM_REGISTERS[args.length - i - 1]}`));
+
+  // Move result into destination if provided
+  if (destination) {
+    emit(1, `MOV ${destination}, RAX`);
+  }
+
+  emit(0, ''); // For nice formatting
+}
+```
+
+In a better compiler, we would not make plus a built-in function. We'd emit code for the assembly instruction ADD. However, making plus a function makes code generation simpler and also allows us to see what function calls look like.
+
+We'll define the plus built-in function in the prefix code.
+
+## The prefix
+Assembly programs consist of a few "sections" in memory. The most important of which are the text and data sections. text is a read-only section where the program instructions themselves are stored. The CPU is instructed to start interpreting from some location in this text section and it will increment through instructions, evaluating each instruction until it reaches an instruction that tells it to jump to a different location to evaluate instructions (e.g. with CALL, RET, or JMP).
+
+To denote the text section we emit .text in our prefix before we emit our generated code.
+
+> The data section is for statically initialized values (e.g. global variables). We don't have any need for that right now so we'll ignore it. 
+>
+> Here is a good read with more detail on these (and other) sections.
+
+Additionally, we need to emit an entrypoint (we'll use _main) and add a notice (.global _main) so that the location of this entrypoint is visible externally. This is important because we let gcc handle the hairier parts of generating an executable file and it needs access to the entrypoint.
+
+So far, our prefix looks like this:
+```js
+function emit_prefix() {
+  emit(1, '.global _main\n');
+
+  emit(1, '.text\n');
+
+  // TODO: add built-in functions
+
+  emit(0, '_main:');
+}
+```
+The last part of our prefix needs to include the plus built-in function. For this, we add the first two parameter registers we agreed on (RDI and RSI) and store the result in RAX.
+```js
+function emit_prefix() {
+  emit(1, '.global _main\n');
+
+  emit(1, '.text\n');
+
+  emit(0, 'plus:');
+  emit(1, 'ADD RDI, RSI');
+  emit(1, 'MOV RAX, RDI');
+  emit(1, 'RET\n');
+
+  emit(0, '_main:');
+}
+```
+And we're golden.
+
+## The postfix
+The job of the postfix will be simple, call exit with the value of RAX since this will be the result of the last function called by the program.
+
+exit is a syscall, so we'll use the SYSCALL instruction to call it. The x86_64 calling convention on macOS and Linux for SYSCALL defines parameters the same way CALL does. But we also need to tell SYSCALL what syscall to call. The convention is to set RAX to the integer representing the syscall on the current system. On Linux it will be 60; on macOS it is 0x2000001.
+
+> When I say "convention", I don't mean that you really have a choice as a programmer. It was arbitrary when the operating system and standard libraries chose it. But if you want to write a working program that uses syscalls or calls out to (say) glibc, you'll need to follow these conventions.
+
+The postfix then looks like this:
+
+```js
+const os = require('os');
+
+const SYSCALL_MAP = os.platform() === 'darwin' ? {
+    'exit': '0x2000001',
+} : {
+    'exit': 60,
+};
+
+function emit_postfix() {
+  emit(1, 'MOV RDI, RAX'); // Set exit arg
+  emit(1, `MOV RAX, ${SYSCALL_MAP['exit']}`); // Set syscall number
+  emit(1, 'SYSCALL');
+}
+```
+And we're set here too.
+
+## Putting it all together
+We can finally write our Javascript entrypoint and run our compiler against a sample program.
+
+The entrypoint might look like this:
+```js
+const { parse } = require('./parser');
+const { compile } = require('./compiler');
+
+function main(args) {
+  const script = args[2];
+  const [ast] = parse(script);
+  compile(ast[0]);
+}
+
+main(process.argv);
+```
+
+And we can call it like so:
+
+```assembly
+$ node ulisp.js '(+ 3 (+ 2 1))'
+  .global _main
+
+  .text
+
+plus:
+  ADD RDI, RSI
+  MOV RAX, RDI
+  RET
+
+_main:
+  PUSH RDI
+  PUSH RSI
+  MOV RDI, 3
+  PUSH RDI
+  PUSH RSI
+  MOV RDI, 2
+  MOV RSI, 1
+  CALL plus
+  POP RSI
+  POP RDI
+  MOV RSI, RAX
+
+  CALL plus
+  POP RSI
+  POP RDI
+
+  MOV RDI, RAX
+  MOV RAX, 0x2000001
+  SYSCALL
+```  
+## Generating an executable file from the output
+
+If we redirect the previous output to an assembly file and call gcc on it, we can generate a program we can run. Then we can echo the $? variable to see the exit code of the previous process.
+
+```bash
+$ node ulisp.js '(+ 3 (+ 2 1))' > program.S
+$ gcc -mstackrealign -masm=intel -o program program.s
+$ ./program
+$ echo $?
+6
+```
+
+And we've got a working compiler! The full source of the compiler is available [here](https://github.com/eatonphil/ulisp).
+
+## Further reading
+* x86_64 calling convention
+* macOS assembly programming
+    * Stack alignment on macOS
+    * Syscalls on macOS
+* Destination-driven code generation
+    * Kent Dybvig's original paper
+    * One-pass code generation in V8
+
+---
+
+Find me on [Github](https://github.com/eatonphil).
