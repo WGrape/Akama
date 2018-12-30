@@ -17,7 +17,7 @@ tags:
 
 ```不变性```正在发生着变化。至少，我们在React中进行```不变性```的方式正在发生着变化。（我们都懂这个反语）
 
-<img src="./images/1.png" />
+<b></b><img src="./images/1.png" />
 
 ## 历史
 JavaScript中不可变性的需求并不明显。从本质上说，不可变性的主要优点是[较少担心的并发](https://www.infoq.com/articles/dhanji-prasanna-concurrency)，但由于JavaScript是单线程的，因此并没有太大的好处。
