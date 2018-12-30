@@ -1,4 +1,19 @@
-# 编译器基础：Lisp到汇编
+---
+layout:     post
+title:      【译】编译器基础：JavaScript实现汇编
+subtitle:   编译器基础 & JavaScript实现汇编
+date:       2018-12-28
+author:     Lvsi
+header-img: 
+catalog: true
+tags:
+    - 汇编
+---
+
+# 【译】编译器基础：JavaScript实现汇编
+
+> 原文 [《Compiler basics: lisp to assembly》](http://notes.eatonphil.com/compiler-basics-lisp-to-assembly.html)<br/>
+> 译者：[Lvsi](https://github.com/Lvsi-China)
 
 在这篇文章中，我们将在Javascript(NodeJS)编写一个简单的编译器，而不需要任何第三方库。我们的目标是采用```(+ 1 (+ 2 3))```类似的输入程序生成并输出汇编程序，该程序执行这些操作并输出6后退出。最后的编译器可在[这里](https://github.com/eatonphil/ulisp)看到。
 
