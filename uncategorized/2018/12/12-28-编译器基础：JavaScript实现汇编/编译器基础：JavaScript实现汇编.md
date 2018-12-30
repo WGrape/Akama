@@ -8,6 +8,7 @@ header-img:
 catalog: true
 tags:
     - 汇编
+    - 编译器
 ---
 
 # 【译】编译器基础：JavaScript实现汇编
@@ -321,7 +322,6 @@ function emit_prefix() {
   emit(0, '_main:');
 }
 ```
-And we're golden.
 
 ## 后缀
 后缀的工作将很简单，使用RAX的值调用exit，因为RAX的值是程序调用的最后一个函数的结果。
