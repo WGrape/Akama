@@ -7,7 +7,7 @@ author:     GFeather
 header-img: 
 catalog: true
 tags:
-    - QUIC
+    - HTTP
 
 
 ---
