@@ -8,6 +8,7 @@ header-img:
 catalog: true
 tags:
     - QUIC
+    - HTTP
 ---
 
 ## 【译】Google的QUIC协议：将网络从TCP移动到UDP

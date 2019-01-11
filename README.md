@@ -30,10 +30,20 @@ Akama组织致力于翻译国外计算机领域资料，只包括如下 3 种资
 
 大家如果有遇到感觉比较好的资料，可以在Issues里面回复，或者自己翻译后提交都可以，我也会署上贡献者的名字。欢迎大家的加入！谢谢！
 
+## ✦ 资源
+
+- 语雀：[Lvsi](https://www.yuque.com/lvsi)
+- 短篇：[短篇翻译](https://lvsi-china.github.io)
+- 长篇：[长篇翻译](https://lvsi-china.github.io/long/)
+
+## ✣ 说明
+
+一个自由的致力于翻译国外计算机领域资料的非盈利组织，希望为开源社区献出我们的一份力！
+
 ## ☺ 成员
 
 | 成员 | 成员 | 成员 |
 | --- | --- | --- |
 | [Lvsi-China](https://github.com/Lvsi-China) | [ChanChou]()  | [WangJJ](https://github.com/wjj57) |
-| [GFeather](https://github.com/GFeather) | | |
+| [墨墨](https://github.com/1092682749) | [GFeather](https://github.com/GFeather) | |
 
