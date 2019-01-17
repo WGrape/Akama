@@ -52,5 +52,5 @@ Akama组织致力于翻译国外计算机领域资料，只包括如下 3 种资
 | [Lvsi-China](https://github.com/Lvsi-China) | [ChanChou]()  | [WangJJ](https://github.com/wjj57) |
 | [墨墨](https://github.com/1092682749) | [GFeather](https://github.com/GFeather) | [YunfanMu](https://github.com/YunfanMu)|
 | [ZiXingLY](https://github.com/ZiXingLY) | [小李](https://github.com/lihailong8586969) | [6heber](https://github.com/6heber) |
-| [unkown_G](https://github.com/GUO12345) | [Noire](https://github.com/18803837937) | |
+| [unkown_G](https://github.com/GUO12345) | [Noire](https://github.com/18803837937) | [kp-China](https://github.com/kp-China) |
 
