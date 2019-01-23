@@ -36,6 +36,11 @@ Akama组织致力于翻译国外计算机领域资料，只包括如下 3 种资
 - 短篇：[短篇翻译](https://lvsi-china.github.io)
 - 长篇：[长篇翻译](https://lvsi-china.github.io/long/)
 
+## ☄ 来源
+
+1. [Hacker News](https://news.ycombinator.com/)
+2. [Google搜索技术关键字，会找到很多重要的英文文章](https://www.google.com)
+
 ## ✣ 说明
 
 一个自由的致力于翻译国外计算机领域资料的非盈利组织，希望为开源社区献出我们的一份力！
@@ -45,5 +50,7 @@ Akama组织致力于翻译国外计算机领域资料，只包括如下 3 种资
 | 成员 | 成员 | 成员 |
 | --- | --- | --- |
 | [Lvsi-China](https://github.com/Lvsi-China) | [ChanChou]()  | [WangJJ](https://github.com/wjj57) |
-| [墨墨](https://github.com/1092682749) | [GFeather](https://github.com/GFeather) | |
-
+| [墨墨](https://github.com/1092682749) | [GFeather](https://github.com/GFeather) | [YunfanMu](https://github.com/YunfanMu)|
+| [ZiXingLY](https://github.com/ZiXingLY) | [小李](https://github.com/lihailong8586969) | [6heber](https://github.com/6heber) |
+| [unkown_G](https://github.com/GUO12345) | [Noire](https://github.com/18803837937) | [kp-China](https://github.com/kp-China) |
+| [HSDT0921](https://github.com/HSDT0921) | [yanmingfu1](https://github.com/yanmingfu1) ||
