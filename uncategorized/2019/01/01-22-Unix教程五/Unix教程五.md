@@ -1,5 +1,19 @@
+---
+layout:     post
+title:      【译】UNIX教程五
+subtitle:   Linux , Unix
+date:       2019-01-22
+author:     Lvsi-China
+header-img: 
+catalog: true
+tags:
+    - Linux
+---
 
 # UNIX教程五
+
+> 原文 [UNIX Tutorial Five](http://www.chm.bris.ac.uk/compres/unix/unix5.html)<br/>
+> 译者：[Lvsi-China](https://github.com/Lvsi-China)
 
 ## 5.1文件系统安全性（访问权限）
 

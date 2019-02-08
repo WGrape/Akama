@@ -1,4 +1,19 @@
+---
+layout:     post
+title:      【译】解释Python内置字典Dict
+subtitle:   Python , Python Dict
+date:       2019-01-26
+author:     Lvsi-China
+header-img: 
+catalog: true
+tags:
+    - Python
+---
+
 # 解释Python内置字典Dict
+
+> 原文 [Inside python dict — an explorable explanation](https://just-taking-a-ride.com/inside_python_dict/chapter1.html)<br/>
+> 译者：[Lvsi-China](https://github.com/Lvsi-China)
 
 ## 内容
 
