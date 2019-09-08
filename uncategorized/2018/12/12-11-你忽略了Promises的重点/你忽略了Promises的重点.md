@@ -3,7 +3,7 @@ layout:     post
 title:      【译】你忽略了Promises的重点
 subtitle:   关于 Promises
 date:       2018-12-11
-author:     Lvsi
+author:     WGrape
 header-img: 
 catalog: true
 tags:
@@ -13,7 +13,7 @@ tags:
 # 【译】你忽略了Promises的重点
 
 > 原文 [《You're Missing the Point of Promises》](https://blog.domenic.me/youre-missing-the-point-of-promises/) [Gist备用链接](https://gist.github.com/domenic/3889970) <br/>
-> 译者：[Lvsi](https://github.com/Lvsi-China)
+> 译者：[WGrape](https://github.com/WGrape)
 
 这篇文章最初是在[gist](https://gist.github.com/domenic/3889970)上出现的。从那时起，Promises/A+ 的发展似乎使其对 Promises/A 规范的重视有点过时了。
 

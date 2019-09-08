@@ -3,7 +3,7 @@ layout:     post
 title:      【译】UNIX教程五
 subtitle:   Linux , Unix
 date:       2019-01-22
-author:     Lvsi-China
+author:     WGrape
 header-img: 
 catalog: true
 tags:
@@ -13,7 +13,7 @@ tags:
 # UNIX教程五
 
 > 原文 [UNIX Tutorial Five](http://www.chm.bris.ac.uk/compres/unix/unix5.html)<br/>
-> 译者：[Lvsi-China](https://github.com/Lvsi-China)
+> 译者：[WGrape](https://github.com/WGrape)
 
 ## 5.1文件系统安全性（访问权限）
 

@@ -3,7 +3,7 @@ layout:     post
 title:      【译】在NodeJS模块中如何共享常量
 subtitle:   NodeJS模块 & 共享常量
 date:       2018-12-16
-author:     Lvsi
+author:     WGrape
 header-img: 
 catalog: true
 tags:
@@ -13,7 +13,7 @@ tags:
 # 【译】在NodeJS模块中如何共享常
 
 > 原文 [《How do you share constants in NodeJS modules?》](https://stackoverflow.com/questions/8595509/how-do-you-share-constants-in-nodejs-modules)<br/>
-> 译者：[Lvsi](https://github.com/Lvsi-China)
+> 译者：[WGrape](https://github.com/WGrape)
 
 ## 问题介绍
 

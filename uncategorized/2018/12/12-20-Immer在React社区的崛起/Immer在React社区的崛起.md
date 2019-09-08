@@ -3,7 +3,7 @@ layout:     post
 title:      【译】Immer在React社区的崛起
 subtitle:   React
 date:       2018-12-20
-author:     Lvsi
+author:     WGrape
 header-img: 
 catalog: true
 tags:
@@ -13,7 +13,7 @@ tags:
 # 【译】Immer在React社区的崛起
 
 > 原文 [《The Rise of Immer in React》](https://www.netlify.com/blog/2018/09/12/the-rise-of-immer-in-react/)<br/>
-> 译者：[Lvsi](https://github.com/Lvsi-China)
+> 译者：[WGrape](https://github.com/WGrape)
 
 ```不变性```正在发生着变化。至少，我们在React中进行```不变性```的方式正在发生着变化。（我们都懂这个反语）
 

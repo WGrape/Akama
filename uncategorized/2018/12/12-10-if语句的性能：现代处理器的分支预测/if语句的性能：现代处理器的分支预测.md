@@ -3,7 +3,7 @@ layout:     post
 title:      【译】if语句的性能：现代处理器的分支预测
 subtitle:   if 分支的性能 & CPU
 date:       2018-12-10
-author:     Lvsi
+author:     WGrape
 header-img: 
 catalog: true
 tags:
@@ -13,7 +13,7 @@ tags:
 # 【译】if语句的性能：现代处理器的分支预测
 
 > 原文 [《Fast and slow if-statements: branch prediction in modern processors》](http://igoro.com/archive/fast-and-slow-if-statements-branch-prediction-in-modern-processors/)<br/>
-> 译者：[Lvsi](https://github.com/Lvsi-China)
+> 译者：[WGrape](https://github.com/WGrape)
 
 ## if语句的性能：现代处理器的分支预测
 

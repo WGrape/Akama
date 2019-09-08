@@ -14,7 +14,6 @@ tags:
 
 > 原文 [《QUIC and HTTP/3 : Too big to fail?!》](https://calendar.perfplanet.com/2018/quic-and-http-3-too-big-to-fail/)<br/>
 > 译者：[Wjj](https://github.com/wjj57)
-> 校正：[Lvsi-China](https://github.com/Lvsi-China)
 
 新的QUIC和HTTP/3协议即将到来，它们是跨越式的进步！结合30多年网络的经验教训和最佳实践，新的协议栈在性能，隐私，安全性和灵活性方面的提供了重大的改进。
 

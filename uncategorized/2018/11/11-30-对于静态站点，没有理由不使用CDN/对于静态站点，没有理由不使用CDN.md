@@ -3,7 +3,7 @@ layout:     post
 title:      【译】对于静态站点，没有理由不使用CDN
 subtitle:   托管你的网站到CDN
 date:       2018-11-30
-author:     Lvsi
+author:     WGrape
 header-img: 
 catalog: true
 tags:
@@ -13,7 +13,7 @@ tags:
 ## 【译】对于静态站点，没有理由不使用CDN
 
 > 翻译文章来自 [《For Static Sites, There’s No Excuse Not to Use a CDN》](https://forestry.io/blog/for-static-sites-theres-no-excuse-not-to-use-a-cdn/#the-future-is-static)<br/>
-> 译者：[Lvsi](https://github.com/Lvsi-China)
+> 译者：[WGrape](https://github.com/WGrape)
 
 你是否充分利用了你的静态网站？如果你没有在CDN上托管你的网站，那你绝对没有充分利用。
 

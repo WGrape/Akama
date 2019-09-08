@@ -3,7 +3,7 @@ layout:     post
 title:      【译】讨论Docker优缺点
 subtitle:   Docker
 date:       2019-01-20
-author:     Lvsi-China
+author:     WGrape
 header-img: 
 catalog: true
 tags:
@@ -13,7 +13,7 @@ tags:
 # 讨论Docker优缺点
 
 > 原文 [Discussing Docker. Pros and Cons.](https://phauer.com/2015/discussing-docker-pros-and-cons/)<br/>
-> 译者：[Lvsi-China](https://github.com/Lvsi-China)
+> 译者：[WGrape](https://github.com/WGrape)
 
 Docker使我们能够轻松地为我们的应用程序创建可重现的环境。我们自动化环境设置并消除手动容易出错的任务。这样我们可以降低部署过程的风险和可靠性。但也有挑战和领域，Docker的使用可能很困难。这篇文章讨论了Docker的几个优点，并指出了一些缺点。
 

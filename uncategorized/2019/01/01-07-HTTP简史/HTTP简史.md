@@ -3,7 +3,7 @@ layout:     post
 title:      【译】HTTP简史
 subtitle:   HTTP简史
 date:       2019-01-07
-author:     Lvsi-China
+author:     WGrape
 header-img: 
 catalog: true
 tags:
@@ -13,7 +13,7 @@ tags:
 # HTTP简史
 
 > 原文 [Brief History of HTTP](https://hpbn.co/brief-history-of-http/)<br/>
-> 译者：[Lvsi-China](https://github.com/Lvsi-China)
+> 译者：[WGrape](https://github.com/WGrape)
 
 超文本传输​​协议（HTTP）是Internet中最普遍和广泛采用的应用程序协议之一：它是客户端和服务器之间的通用语言，支持现代Web。从简单的单一关键字和文档路径开始，它已成为不仅适用于浏览器，而且适用于几乎所有连接互联网的软件和硬件应用程序的协议。
 

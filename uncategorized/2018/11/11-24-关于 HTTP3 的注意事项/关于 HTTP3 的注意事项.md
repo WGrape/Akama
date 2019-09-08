@@ -3,7 +3,7 @@ layout:     post
 title:      【译】关于 Http/3 的注意事项
 subtitle:   HTTP/3标准化
 date:       2018-11-24
-author:     Lvsi
+author:     WGrape
 header-img: 
 catalog: true
 tags:
@@ -13,7 +13,7 @@ tags:
 ## 【译】关于 Http/3 的注意事项
 
 > 原文 [《Some notes about HTTP/3》](https://blog.erratasec.com/2018/11/some-notes-about-http3.html#.W_idYlUzbDe)<br/>
-> 译者：[Lvsi](https://github.com/Lvsi-China)
+> 译者：[WGrape](https://github.com/WGrape)
 
 Http/3很快就要标准化了，作为一个古老的协议，我想我应该对此写些评注。
 

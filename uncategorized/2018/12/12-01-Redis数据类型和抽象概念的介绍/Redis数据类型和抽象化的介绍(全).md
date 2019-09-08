@@ -3,7 +3,7 @@ layout:     post
 title:      【译】Redis数据类型和抽象化的介绍(全)
 subtitle:   Redis数据类型
 date:       2018-12-01
-author:     Lvsi
+author:     WGrape
 header-img: 
 catalog: true
 tags:
@@ -13,7 +13,7 @@ tags:
 ## 【译】Redis数据类型和抽象化的介绍(全)
 
 > 原文 [《An introduction to Redis data types and abstractions》](https://redis.io/topics/data-types-intro)<br/>
-> 译者：[Lvsi](https://github.com/Lvsi-China)
+> 译者：[WGrape](https://github.com/WGrape)
 
 ### 介绍
 

@@ -3,7 +3,7 @@ layout:     post
 title:      【译】不必要的 HTTP 头部信息
 subtitle:   HTTP Headers
 date:       2018-12-07
-author:     Lvsi
+author:     WGrape
 header-img: 
 catalog: true
 tags:
@@ -13,7 +13,7 @@ tags:
 # 不必要的 HTTP 头部信息
 
 > 原文 [《The headers we don't want》](https://www.fastly.com/blog/headers-we-dont-want)<br/>
-> 译者：[Lvsi](https://github.com/Lvsi-China)
+> 译者：[WGrape](https://github.com/WGrape)
 
 HTTP headers是控制缓存和浏览器处理Web内容的一种重要方式。但是许多不正确或者毫无意义的使用，会在加载页面的时刻增加额外开销，并且可能无法按预期工作。在关于header最佳实践的一系列文章的第一篇中，我们先看一些不必要的 header 。
 

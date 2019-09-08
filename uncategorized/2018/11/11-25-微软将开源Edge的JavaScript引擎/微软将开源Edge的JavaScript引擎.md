@@ -3,7 +3,7 @@ layout:     post
 title:      【译】微软将开源Edge的JavaScript引擎
 subtitle:   ChakraCore引擎
 date:       2018-11-25
-author:     Lvsi
+author:     WGrape
 header-img: 
 catalog: true
 tags:
@@ -14,7 +14,7 @@ tags:
 
 > 原文 [《Microsoft Edge’s JavaScript engine to go open-source
 》](https://blogs.windows.com/msedgedev/2015/12/05/open-source-chakra-core/)<br/>
-> 译者：[Lvsi](https://github.com/Lvsi-China)
+> 译者：[WGrape](https://github.com/WGrape)
 
 今天在佛罗里达的[JSConf US Last Call]大会上，我们宣布将会开源Chakra的核心组件，叫做ChakraCore，包含了微软Edge浏览器的JavaScript引擎中的所有重要组件。下个月将会把ChakraCore源代码以MIT许可证发布。
 

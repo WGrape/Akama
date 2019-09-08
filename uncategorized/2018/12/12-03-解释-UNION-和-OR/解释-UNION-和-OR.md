@@ -3,7 +3,7 @@ layout:     post
 title:      【译】解释 UNION 和 OR
 subtitle:   UNION & OR
 date:       2018-12-03
-author:     Lvsi
+author:     WGrape
 header-img: 
 catalog: true
 tags:
@@ -13,7 +13,7 @@ tags:
 ## 【译】解释 UNION 和 OR
 
 > 原文 [《Union and OR and the Explanation》](https://leetcode.com/problems/big-countries/discuss/103561/Union-and-OR-and-the-Explanation)<br/>
-> 译者：[Lvsi](https://github.com/Lvsi-China)
+> 译者：[WGrape](https://github.com/WGrape)
 
 > LeetCode : 595. 大的国家<br>
 > 如果一个国家的面积超过300万平方公里，或者人口超过2500万，那么这个国家就是大国家。<br>
