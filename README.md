@@ -7,7 +7,7 @@
 
 ## 介绍
 
-<img src="https://github.com/WGrape/Akama/raw/master/extra/images/logo.png">
+<img src="./extra/images/logo.png">
 
 Akama : 翻译国外计算机领域相关文章资料. [查看网站](https://WGrape.github.io/)
 
